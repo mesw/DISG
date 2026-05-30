@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DISC Persönlichkeitstest - Quick Decision</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js for the results visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header with Progress and Timers -->
+        <header id="test-header">
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <div class="stats-bar">
+                <div class="timer-box">
+                    <span class="label">Gesamtzeit:</span>
+                    <span id="total-timer">00:00</span>
+                </div>
+                <div class="timer-box countdown" id="micro-timer-container">
+                    <span class="label">Entscheidung:</span>
+                    <span id="micro-timer">3</span>s
+                </div>
+                <button id="back-btn" class="hidden">Zurück</button>
+            </div>
+        </header>
+
+        <!-- Main Test Area -->
+        <main id="test-area">
+            <div id="instruction-screen">
+                <h1>DISC Quick-Test</h1>
+                <p>Wählen Sie immer das Adjektiv, das Sie <strong>eher</strong> beschreibt.</p>
+                <p>Nutzen Sie die <strong>Pfeiltasten (← / →)</strong>, wischen Sie oder klicken Sie auf die Hälften.</p>
+                <p>Sie haben 3 Sekunden pro Entscheidung - seien Sie intuitiv!</p>
+                <button id="start-btn">Test starten</button>
+            </div>
+
+            <div id="question-screen" class="hidden">
+                <div id="choice-left" class="choice-area">
+                    <span class="adjective-text" id="adj-left">Adjektiv 1</span>
+                    <span class="hint">Pfeil Links oder Klick</span>
+                </div>
+                <div id="choice-right" class="choice-area">
+                    <span class="adjective-text" id="adj-right">Adjektiv 2</span>
+                    <span class="hint">Pfeil Rechts oder Klick</span>
+                </div>
+            </div>
+
+            <!-- Result Area -->
+            <div id="result-container" class="hidden">
+                <div class="no-print" style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Ihre Auswertung</h2>
+                    <button id="export-btn" class="secondary-btn">Als PDF speichern / Drucken</button>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="discChart"></canvas>
+                </div>
+                
+                <div id="score-details"></div>
+                <div id="primary-type-description" class="result-box"></div>
+                
+                <h3>Detaillierte Beschreibungen</h3>
+                <div id="all-descriptions"></div>
+                
+                <button type="button" id="restart-btn" onclick="location.reload()">Test wiederholen</button>
+            </div>
+        </main>
+    </div>
+    <script src="personality-test.js"></script>
+</body>
+</html>
